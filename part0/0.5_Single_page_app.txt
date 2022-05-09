@@ -1,0 +1,18 @@
+browser->server: HTTP GET https://studies.cs.helsinki.fi/end note
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{"content":"Never gonna run around and desert you","date":"2022-05-06T08:53:57.144Z"}, ...]
+
+note over browser:
+browser updates dom with data from notes.
+end note

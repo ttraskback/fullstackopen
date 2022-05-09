@@ -1,0 +1,16 @@
+note over browser:
+Browser executes hooks for form submit
+adds note to local storage
+triggers redrawing of dom
+send note to server
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over server:
+Saves note
+Responds to request
+end note
+
+server->browser: 201 {"message":"note created"}
+
