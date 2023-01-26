@@ -1,0 +1,28 @@
+GET http://localhost:3003/api/blogs/
+
+###
+POST http://localhost:3003/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+    "title": "test",
+    "author": "test test"  ,
+    "url": "test.com",
+    "likes": 1
+}
+
+###
+DELETE  http://localhost:3003/api/blogs/63c922bb994a0 HTTP/1.1
+
+###
+GET  http://localhost:3003/api/blogs/63c92411aab6a820dc8ca602 HTTP/1.1
+
+
+### Short name
+POST http://localhost:3003/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+      "name": "Te", 
+      "number": "040-123459"
+}
