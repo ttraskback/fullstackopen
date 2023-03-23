@@ -1,0 +1,36 @@
+GET http://localhost:3003/api/users/
+
+###
+POST http://localhost:3003/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+ "username":"test 2",
+ "name":"test test",
+ "password":"Test1234"
+}
+
+###
+DELETE  http://localhost:3003/api/users/63eb741a07ccc526ab688031 HTTP/1.1
+
+###
+GET  http://localhost:3003/api/users/63c92411aab6a820dc8ca602 HTTP/1.1
+
+
+### Short name
+POST http://localhost:3003/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+      "name": "Te", 
+      "number": "040-123459"
+}
+
+### Login
+POST http://localhost:3003/api/login/ HTTP/1.1
+content-type: application/json
+
+{
+      "username":"test 2",
+      "password":"Test1234"
+}
