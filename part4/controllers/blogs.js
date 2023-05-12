@@ -7,7 +7,7 @@ import Blog from "../models/blogs.js"
 import User from '../models/user.js'
 
 blogsRouter.get('/', async (request, response) => {
-    const blogs = await Blog.find({}).populate('author', {
+    const blogs = await Blog.find({}).populate('user', {
         name: 1,
         username:  1,
         id: 1
@@ -16,7 +16,7 @@ blogsRouter.get('/', async (request, response) => {
 })
 
 blogsRouter.get('/:id', async (request, response) => {
-    const blog = await Blog.findById(request.params.id).populate('author', {
+    const blog = await Blog.findById(request.params.id).populate('user', {
         name: 1,
         username:  1,
         id: 1
@@ -33,7 +33,7 @@ blogsRouter.post('/', async (request, response) => {
 
     const user = request.user
     
-    blog.author = user._id
+    blog.user = user._id
 
     const savedBlog = await blog.save()
 
@@ -45,8 +45,11 @@ blogsRouter.post('/', async (request, response) => {
 blogsRouter.delete('/:id', async (request, response) => {
     
     const blog = await Blog.findById(request.params.id)
-    if (request.user == null 
-        || blog.author.toString() !== request.user._id.toString()
+    if(!blog){
+        return response.status(404).end()
+    }
+    if (request.user == null
+        || blog.user.toString() !== request.user._id.toString()
         ){
         return response.status(400).json({ error: "Invalid token" }).end()
 
@@ -61,11 +64,12 @@ blogsRouter.put('/:id', async (request, response, next) => {
 
     const blog = {
         title: body.title,
+        user: body.user,
         author: body.author,
         url: body.url,
         likes: body.likes,
     }
-    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true }).populate('author', {
+    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true }).populate('user', {
         name: 1,
         username:  1,
         id: 1

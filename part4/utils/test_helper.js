@@ -7,39 +7,46 @@ const initialBlogs = [
         title: 'Go To Statement Considered Harmful 1',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 1,
+        author: 'Author 1'
     },
     {
         title: 'Go To Statement Considered Harmful 2',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 8,
+        author: 'Author 2'
     },
     {
         title: 'Go To Statement Considered Harmful 3',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 6,
+        author: 'Author 3'
     },
     {
         title: 'Go To Statement Considered Harmful 4',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 8,
+        author: 'Author 4'
     }
     ,
     {
         title: 'Go To Statement Considered Harmful 5',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 2,
+        author: 'Author 4'
     }
     ,
     {
         title: 'Go To Statement Considered Harmful 6',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 0,
+        author: 'Author 5'
     }
     ,
     {
         title: 'Go To Statement Considered Harmful 7',
         url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
         likes: 0,
+        author: 'Author 1'
     },
 ]
 
@@ -66,6 +73,7 @@ const nonExistingId = async () => {
   const blog = new Blog({
     title: 'This will be removed',
     url: 'soon',
+    author: 'james',
     likes: 1,
   })
   await blog.save()
@@ -85,7 +93,7 @@ const blogsInDb = async () => {
 
 const initialBlogsWithUser = (user) => {
     const mappedBlogs =  initialBlogs.map((blog) =>{
-        blog.author = user._id;
+        blog.user = user._id;
         return blog;
     });
     return mappedBlogs;

@@ -67,6 +67,11 @@ describe('viewing a specific blog', () => {
         const blogsAtStart = await test_helper.blogsInDb()
 
         const blogToView = blogsAtStart[0]
+        blogToView.user = {
+            "id": blogToView.user.toString(),
+            "name": "test 1",
+            "username": "tester2",
+        }
 
         const resultblog = await api
             .get(`/api/blogs/${blogToView.id}`)
@@ -97,6 +102,7 @@ describe('addition of a new blog', () => {
         const newBlog = {
             title: 'New Test',
             url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
+            author: 'james may',
             likes: 8,
         }
 
@@ -117,7 +123,8 @@ describe('addition of a new blog', () => {
     test('likes is defaulted to 0', async () => {
         const newBlog = {
             title: 'Like Test',
-            url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html'
+            url: 'http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html',
+            author: 'james may'
         }
         const response = await api
             .post('/api/blogs')
@@ -200,6 +207,11 @@ describe('updating of a blog', () => {
         const blogsAtStart = await test_helper.blogsInDb()
         const blogToUpdate = blogsAtStart[0]
         blogToUpdate.title = "Update Test"
+        blogToUpdate.user = {
+            "id": blogToUpdate.user.toString(),
+            "name": "test 1",
+            "username": "tester2",
+        }
 
         const updatedBlog = await api
             .put(`/api/blogs/${blogToUpdate.id}`)
