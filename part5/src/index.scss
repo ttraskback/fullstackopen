@@ -1,0 +1,57 @@
+.error {
+    color: red;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: black;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-color: green;
+}
+
+form.blogAddForm {
+    display: inline-block;
+    label {
+        float: left;
+        clear: left;
+    }
+    input {
+        float: left;
+        clear: both;
+        margin: 5px 1px;
+    }
+    button {
+        float: left;
+        clear: both;
+    }
+}
+
+.blogContent{
+    padding-top: 10px;
+    padding-left: 2px;
+    border: solid;
+    border-width: 1px;
+    margin-bottom: 5px;
+    .info {
+        &.show{
+            display: inline-block;
+        }
+        &.hide {
+            display: none;
+        }
+        span{
+            float: left;
+            clear: both;
+        }
+    }
+}
