@@ -35,6 +35,13 @@ app.use('/api/blogs', middleware.userExtractor, blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
+if (process.env.NODE_ENV === 'test') {
+    const {
+        default: testingRouter,
+      } = await import("./controllers/testing.js");
+    app.use('/api/testing', testingRouter)
+}
+
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 export default app
